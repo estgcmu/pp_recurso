@@ -31,13 +31,13 @@ public class json {
 
         try {
 
-            Object obj = parser.parse(new FileReader("/Users/joaosoares/NetBeansProjects/PP_ER_8090301_8150277_RECURSO/src/levelsJSON/level1.json"));
+            Object obj = parser.parse(new FileReader("src/levelsJSON/level1.json"));
 
             JSONObject jsonObject = (JSONObject) obj;
             //System.out.println(jsonObject);
 
             Long Level = (Long) jsonObject.get("Level");
-            System.out.println(Level);
+            System.out.println("Level");
     
 
             // loop array

@@ -18,8 +18,10 @@ public class Classification implements ClassificationContract{
 
     private String level = "";
     private int totalLaps = 0;
+    private PilotContract Pilot;
     private double bestLap = 0.0;
     private double totalTime = 0.0;
+    
     
     
     @Override
@@ -39,7 +41,7 @@ public class Classification implements ClassificationContract{
 
     @Override
     public PilotContract getPilot() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return Pilot;
     }
 
     @Override
@@ -49,7 +51,7 @@ public class Classification implements ClassificationContract{
 
     @Override
     public void setPilot(PilotContract pc) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.Pilot = pc;
     }
 
     @Override

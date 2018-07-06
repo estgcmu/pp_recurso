@@ -5,6 +5,8 @@
  */
 package pp_er_8090301_8150277_recurso;
 
+import game.classes.RacingGame;
+
 /**
  *
  * @author joaosoares
@@ -14,8 +16,19 @@ public class PP_ER_8090301_8150277_RECURSO {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        // TODO code application logic here    sdsds
+    public static void main(String[] args) throws Exception {
+        
+        Classification c = new Classification();
+        RacingGame game = new RacingGame();
+        game.setClassification(c);
+        //game.addVehicle(bike);
+        
+        //game.addLevel(level);
+        //game.addNumberOfLaps(l);
+        //RaceResults raceResulsts = new RaceResulsts();
+        //game.setRaceResults(raceResults);
+        game.startGame();
+        
     }
     
 }
