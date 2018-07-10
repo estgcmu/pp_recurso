@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Iterator;
+import javafx.scene.CacheHint;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -21,6 +22,17 @@ import org.json.simple.parser.ParseException;
  * @author Tiago Pinto
  */
 public class Vehicle extends VehicleAbstract{
+    
+    private double speed = 0.0;
+    private int direction = 0;
+    private double padBreakVehicle = 0.0;
+    private String type = "";
+    private String model = "";
+    private Pilot pilotName;
+    private String name = "";
+    private double w = 0.0;
+    private double h = 0.0;
+    private double[] bounds = {0.0};
 
     public Vehicle(String name) {
         super(name);
@@ -86,42 +98,42 @@ public class Vehicle extends VehicleAbstract{
 
     @Override
     public double getSpeedVehicle() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return speed;
     }
 
     @Override
     public int getDirectionVehicle() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return direction;
     }
 
     @Override
     public double getBreakPadVehicle() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return padBreakVehicle;
     }
 
     @Override
     public String getType() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return type;
     }
 
     @Override
     public String getModel() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return model;
     }
 
     @Override
     public void setPilot(PilotContract pc) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.pilotName = (Pilot) pc;
     }
 
     @Override
     public String getName() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return name;
     }
 
     @Override
     public void setName(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.name = string;
     }
 
     @Override
@@ -131,27 +143,27 @@ public class Vehicle extends VehicleAbstract{
 
     @Override
     public double getW() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return w;
     }
 
     @Override
     public void setW(double d) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.w = d;
     }
 
     @Override
     public double getH() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return h;
     }
 
     @Override
     public void setH(double d) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.h = d;
     }
 
     @Override
     public double[] getBounds() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return bounds;
     }
     
 }
