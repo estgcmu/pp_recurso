@@ -49,40 +49,27 @@ public class Vehicle extends VehicleAbstract{
             JSONObject jsonObject = (JSONObject) obj;
             //System.out.println(jsonObject);
 
-            Long Level = (Long) jsonObject.get("Type");
-            System.out.println("Type");
+            String Type = (String) jsonObject.get("Type");
+            System.out.println("Type" + "\n" + Type);
     
 
+            String Model = (String) jsonObject.get("Model");
+            System.out.println("Model" + "\n" + Model);
+            
+            
             // loop array
-            JSONArray UpperBound = (JSONArray) jsonObject.get("UpperBound");
-            Iterator<Long> iterator = UpperBound.iterator();
+            JSONArray Bounds = (JSONArray) jsonObject.get("Bounds");
+            Iterator<Long> iterator = Bounds.iterator();
             while (iterator.hasNext()) {
                 System.out.println(iterator.next());
             }
             
-            // loop array
-            JSONArray LowerBound = (JSONArray) jsonObject.get("LowerBound");
-            Iterator<Long> iterator_2 = LowerBound.iterator();
-            System.out.println("Lowerbound");
-            while (iterator_2.hasNext()) {
-                System.out.println(iterator_2.next());
-            }
+            Double Speed = (Double) jsonObject.get("Speed");
+            System.out.println("Speed" + "\n" + Speed);
             
-             // loop array
-            JSONArray Checkpoints = (JSONArray) jsonObject.get("Checkpoints");
-            Iterator<Long> iterator_3 = Checkpoints.iterator();
-            System.out.println("Checkpoints");
-            while (iterator_3.hasNext()) {
-                System.out.println(iterator_3.next());
-            }
+            Long Direction = (Long) jsonObject.get("Direction");
+            System.out.println("Direction" + "\n" + Direction);
             
-            // loop array
-            JSONArray StartCar = (JSONArray) jsonObject.get("StartCar");
-            Iterator<Long> iterator_4 = StartCar.iterator();
-            System.out.println("StartCar");
-            while (iterator_4.hasNext()) {
-                System.out.println(iterator_4.next());
-            }
             
             
         } catch (FileNotFoundException e) {
@@ -138,6 +125,7 @@ public class Vehicle extends VehicleAbstract{
 
     @Override
     public PilotContract getPilot() {
+        //return Pilot pilotName;
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

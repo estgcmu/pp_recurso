@@ -16,12 +16,22 @@ import game.classes.VehicleAbstract;
  */
 public class Classification implements ClassificationContract{
 
-    private String level = "";
+    private String level = "src/levelsJSON/level1.json";
     private int totalLaps = 0;
     private PilotContract Pilot;
+    private VehicleAbstract vehicle;
     private double bestLap = 0.0;
     private double totalTime = 0.0;
+
+    public Classification() {
+    }
+
     
+    public Classification(PilotContract Pilot, VehicleAbstract vehicle) {
+        super();
+        this.Pilot = Pilot;
+        this.vehicle = vehicle;
+    }
     
     
     @Override
@@ -56,12 +66,12 @@ public class Classification implements ClassificationContract{
 
     @Override
     public VehicleAbstract getVehicle() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return vehicle;
     }
 
     @Override
     public void setVehicle(VehicleAbstract va) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.vehicle = va;
     }
 
     @Override

@@ -9,12 +9,13 @@ package pp_er_8090301_8150277_recurso;
  *
  * @author Tiago Pinto
  */
-public class VehicleManagement extends Vehicle{
-    
-    public VehicleManagement(String name) {
-        super(name);
+public class GeneralException extends game.exceptions.GeneralException{
+
+    public GeneralException() {
     }
-    
-    
+
+    public GeneralException(String msg) {
+        super(msg);
+    }
     
 }

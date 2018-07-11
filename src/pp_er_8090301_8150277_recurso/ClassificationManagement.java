@@ -12,9 +12,19 @@ import java.util.Arrays;
  *
  * @author Tiago Pinto
  */
-public class ClassificationManager implements ClassificationManagementContract{
+public class ClassificationManagement implements ClassificationManagementContract{
 
     private Object objects[];
+
+    public ClassificationManagement() {
+        super();
+    }
+        
+    public ClassificationManagement(Object[] objects) {
+        this.objects = objects;
+    }
+    
+    
     
     @Override
     public void sort() {
@@ -35,6 +45,12 @@ public class ClassificationManager implements ClassificationManagementContract{
     public void decreaseSize() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
+
 
     @Override
     public boolean addObject(Object o) {

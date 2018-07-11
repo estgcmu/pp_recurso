@@ -9,12 +9,10 @@ package pp_er_8090301_8150277_recurso;
  *
  * @author Tiago Pinto
  */
-public class VehicleManagement extends Vehicle{
+public class StatusUpdater extends game.classes.StatusUpdater{
     
-    public VehicleManagement(String name) {
-        super(name);
+    public StatusUpdater(double x, double y) {
+        super(x, y);
     }
-    
-    
     
 }

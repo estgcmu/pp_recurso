@@ -21,6 +21,15 @@ public class Pilot implements PilotContract{
     private KeyCode LEFT = KeyCode.LEFT;
     private KeyCode RIGHT = KeyCode.RIGHT;
 
+    public Pilot() {
+    }
+    
+    public Pilot(int id) {
+        super();
+        this.id = id;
+    }
+    
+
     @Override
     public String getName() {
         return name;

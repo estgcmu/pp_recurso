@@ -5,7 +5,10 @@
  */
 package pp_er_8090301_8150277_recurso;
 
+import game.Contracts.LevelContract;
+import game.classes.RaceResultsAbstract;
 import game.classes.RacingGame;
+import game.classes.VehicleAbstract;
 
 /**
  *
@@ -18,15 +21,19 @@ public class PP_ER_8090301_8150277_RECURSO {
      */
     public static void main(String[] args) throws Exception {
         
+        VehicleAbstract bike = new Vehicle("Bike");
+        LevelContract level = new Level();
+        int l = 0;
+        RaceResultsAbstract raceResults = null;
+        
         Classification c = new Classification();
         RacingGame game = new RacingGame();
         game.setClassification(c);
-        //game.addVehicle(bike);
-        
-        //game.addLevel(level);
-        //game.addNumberOfLaps(l);
-        //RaceResults raceResulsts = new RaceResulsts();
-        //game.setRaceResults(raceResults);
+        game.addVehicle(bike);
+        game.addLevel(level);
+        game.addNumberOfLaps(l);
+        RaceResults raceResulsts = new RaceResults();
+        game.setRaceResults(raceResults);
         game.startGame();
         
     }

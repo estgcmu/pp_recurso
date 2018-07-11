@@ -21,8 +21,8 @@ import org.json.simple.parser.ParseException;
  */
 public class Level implements LevelContract{
     
-    private String name = "";
-    private String pathToImage = "levelImages/level01.png";
+    private String name = "Easy Game";
+    private String pathToImage = "src/levelImages/level01.png";
     private double[] lowerBounds = {0.0};
     private double[] upperBounds = {0.0};
     private double[] checkPoints = {0.0};

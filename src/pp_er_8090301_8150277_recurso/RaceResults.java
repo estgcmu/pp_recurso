@@ -21,6 +21,13 @@ import java.io.IOException;
  */
 public class RaceResults extends RaceResultsAbstract implements RaceResultsComparator{
 
+    
+    
+    public RaceResults() {
+        super();
+    }
+    
+
     @Override
     public ClassificationManagementContract getClassificationManagementContract() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
