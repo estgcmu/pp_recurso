@@ -53,7 +53,8 @@ public class RaceResults extends RaceResultsAbstract implements RaceResultsCompa
 		obj.put("Name", "crunchify.com");
 		obj.put("Author", "App Shah");
  
-		JSONArray company = new JSONArray();
+		JSONArray  company = new JSONArray();
+                
 		company.add("Compnay: eBay");
 		company.add("Compnay: Paypal");
 		company.add("Compnay: Google");
