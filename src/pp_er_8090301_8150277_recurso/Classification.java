@@ -17,6 +17,7 @@ import game.classes.VehicleAbstract;
 public class Classification implements ClassificationContract{
 
     private String level = "src/levelsJSON/level1.json";
+    
     private int totalLaps = 0;
     private PilotContract Pilot;
     private VehicleAbstract vehicle;

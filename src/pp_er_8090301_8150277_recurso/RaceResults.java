@@ -12,7 +12,10 @@ import game.classes.RaceResultsAbstract;
 import game.classes.VehicleAbstract;
 import game.classes.VehicleManagement;
 import game.collections.ClassificationManagementContract;
+import java.io.FileWriter;
 import java.io.IOException;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 
 /**
@@ -46,7 +49,23 @@ public class RaceResults extends RaceResultsAbstract implements RaceResultsCompa
 
     @Override
     public ClassificationManagementContract loadResultsFromFile() throws IOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        JSONObject obj = new JSONObject();
+		obj.put("Name", "crunchify.com");
+		obj.put("Author", "App Shah");
+ 
+		JSONArray company = new JSONArray();
+		company.add("Compnay: eBay");
+		company.add("Compnay: Paypal");
+		company.add("Compnay: Google");
+		obj.put("Company List", company);
+ 
+		// try-with-resources statement based on post comment below :)
+		try (FileWriter file = new FileWriter("/Users/<username>/Documents/file1.txt")) {
+			file.write(obj.toJSONString());
+			System.out.println("Successfully Copied JSON Object to File...");
+			System.out.println("\nJSON Object: " + obj);
+    }
+                return classification;
     }
 
     @Override
