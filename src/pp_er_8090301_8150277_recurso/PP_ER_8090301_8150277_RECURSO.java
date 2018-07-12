@@ -24,7 +24,7 @@ public class PP_ER_8090301_8150277_RECURSO {
         VehicleAbstract bike = new Vehicle("Bike");
         LevelContract level = new Level();
         int l = 0;
-        RaceResultsAbstract raceResults = null;
+        RaceResultsAbstract raceResults = new RaceResults();
         
         Classification c = new Classification();
         RacingGame game = new RacingGame();

@@ -15,7 +15,7 @@ import javafx.scene.input.KeyCode;
 public class Pilot implements PilotContract{
     
     private String name = "";
-    private int id;
+    private int id = 0;
     private KeyCode UP = KeyCode.UP;
     private KeyCode DOWN = KeyCode.DOWN;
     private KeyCode LEFT = KeyCode.LEFT;

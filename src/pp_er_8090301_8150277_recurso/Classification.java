@@ -21,6 +21,7 @@ public class Classification implements ClassificationContract{
     private PilotContract Pilot;
     private VehicleAbstract vehicle;
     private double bestLap = 0.0;
+    private double lap = 0.0;
     private double totalTime = 0.0;
 
     public Classification() {

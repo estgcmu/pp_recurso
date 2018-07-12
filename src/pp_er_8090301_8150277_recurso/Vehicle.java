@@ -23,16 +23,23 @@ import org.json.simple.parser.ParseException;
  */
 public class Vehicle extends VehicleAbstract{
     
-    private double speed = 0.0;
-    private int direction = 0;
-    private double padBreakVehicle = 0.0;
-    private String type = "";
-    private String model = "";
+    private double speed = 0.1;
+    private int direction = 5;
+    private double padBreakVehicle = 0.1;
+    private String type = "x";
+    private String model = "Norton 1941";
     private Pilot pilotName;
-    private String name = "";
-    private double w = 0.0;
-    private double h = 0.0;
-    private double[] bounds = {0.0};
+    private String name = "Bike";
+    private double w = 20.0;
+    private double h = 20.0;
+    private double[] bounds = {29.0, 0.0, 15.0, 0.0,
+            15.0, 0.0, 7.0, 12.0,
+            7.0, 12.0, -3.0, 13.0,
+            -3.0, 13.0, -3.0, 22.0,
+            -3.0, 22.0, 6.0, 26.0,
+            6.0, 26.0, 34.0, 24.0,
+            34.0, 24.0, 35.0, 5.0,
+            35.0, 5.0, 29.0, -1.0};
 
     public Vehicle(String name) {
         super(name);
@@ -115,7 +122,9 @@ public class Vehicle extends VehicleAbstract{
 
     @Override
     public String getName() {
-        return name;
+      
+        System.out.println("Name:" + name);
+          return name;
     }
 
     @Override
