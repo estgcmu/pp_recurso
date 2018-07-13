@@ -50,7 +50,8 @@ public class Vehicle extends VehicleAbstract{
         JSONParser parser = new JSONParser();
 
         try {
-
+            
+            
             Object obj = parser.parse(new FileReader("src/vehicleJSON/bike.json"));
 
             JSONObject jsonObject = (JSONObject) obj;
@@ -69,6 +70,7 @@ public class Vehicle extends VehicleAbstract{
             Iterator<Long> iterator = Bounds.iterator();
             while (iterator.hasNext()) {
                 System.out.println(iterator.next());
+                
             }
             
             Double Speed = (Double) jsonObject.get("Speed");
