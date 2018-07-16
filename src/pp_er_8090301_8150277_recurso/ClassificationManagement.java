@@ -15,16 +15,18 @@ import java.util.Arrays;
 public class ClassificationManagement implements ClassificationManagementContract{
 
     private Object objects[];
+    private int numberOfObjects;
 
+    
     public ClassificationManagement() {
-        super();
+        objects = new Object[DEFAULT_SIZE];
+        numberOfObjects = 0;  
     }
         
     public ClassificationManagement(Object[] objects) {
         this.objects = objects;
     }
-    
-    
+
     
     @Override
     public void sort() {
@@ -33,17 +35,23 @@ public class ClassificationManagement implements ClassificationManagementContrac
 
     @Override
     public int size() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return numberOfObjects;
     }
 
     @Override
     public void increaseSize() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Object[] newObjects = new Object[DEFAULT_SIZE];
+        
+        for(int i=0; i < this.size(); i++){
+            newObjects[i] = objects[i];
+        }
+        
+        objects = newObjects;
     }
 
     @Override
     public void decreaseSize() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        numberOfObjects--;    //decrementa o número de objetos na classificação
     }
 
     @Override

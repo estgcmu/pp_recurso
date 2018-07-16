@@ -27,18 +27,18 @@ public class TesteLoadWriteFile {
  
         try {
  
-            Object obj = parser.parse(new FileReader("C:/Users/Tiago Pinto/Documents/NetBeansProjects/pp_recurso/src/raceResults/file1.json"));
+            Object obj = parser.parse(new FileReader("C:/Users/Tiago Pinto/Documents/NetBeansProjects/pp_recurso/src/raceResults/classificationLevel01.json"));
  
             JSONObject jsonObject = (JSONObject) obj;
  
-            String name = (String) jsonObject.get("Name");
-            String author = (String) jsonObject.get("Author");
-            JSONArray companyList = (JSONArray) jsonObject.get("Company List");
+            String position = (String) jsonObject.get("Position");
+           
+            JSONArray positionDetails = (JSONArray) jsonObject.get("positionDetails");
  
-            System.out.println("Name: " + name);
-            System.out.println("Author: " + author);
-            System.out.println("\nCompany List:");
-            Iterator<String> iterator = companyList.iterator();
+            System.out.println("Position: " + position);
+            
+            System.out.println("\nPositionDetails:");
+            Iterator<String> iterator = positionDetails.iterator();
             while (iterator.hasNext()) {
                 System.out.println(iterator.next());
             }

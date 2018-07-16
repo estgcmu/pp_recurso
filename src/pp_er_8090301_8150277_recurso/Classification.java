@@ -14,13 +14,12 @@ import game.classes.VehicleAbstract;
  *
  * @author Tiago Pinto
  */
-public class Classification implements ClassificationContract{
+public class Classification implements ClassificationContract {
 
-    private String level = "src/levelsJSON/level1.json";
-    
+    private String level;
     private int totalLaps = 0;
-    private PilotContract Pilot;
-    private VehicleAbstract vehicle;
+    private Pilot Pilot;
+    private Vehicle vehicle;
     private double bestLap = 0.0;
     private double lap = 0.0;
     private double totalTime = 0.0;
@@ -28,14 +27,14 @@ public class Classification implements ClassificationContract{
     public Classification() {
     }
 
-    
-    public Classification(PilotContract Pilot, VehicleAbstract vehicle) {
-        super();
+    public Classification(String level, Pilot Pilot, Vehicle vehicle) {
+        this.level = level;
         this.Pilot = Pilot;
         this.vehicle = vehicle;
     }
     
     
+
     @Override
     public String getLevel() {
         return level;
@@ -63,7 +62,7 @@ public class Classification implements ClassificationContract{
 
     @Override
     public void setPilot(PilotContract pc) {
-        this.Pilot = pc;
+        this.Pilot = (Pilot) pc;
     }
 
     @Override
@@ -73,7 +72,7 @@ public class Classification implements ClassificationContract{
 
     @Override
     public void setVehicle(VehicleAbstract va) {
-        this.vehicle = va;
+        this.vehicle = (Vehicle) va;
     }
 
     @Override
@@ -83,7 +82,10 @@ public class Classification implements ClassificationContract{
 
     @Override
     public void addLap(double d) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (bestLap > d) {
+            bestLap = d;
+        }
+        totalTime += d; //totalTime = totalTime + d;   
     }
 
     @Override
@@ -98,7 +100,8 @@ public class Classification implements ClassificationContract{
 
     @Override
     public int compareTo(RaceResultsComparator rrc) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return rrc.compareTo(rrc);
     }
     
+
 }

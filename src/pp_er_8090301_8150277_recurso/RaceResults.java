@@ -7,76 +7,96 @@ package pp_er_8090301_8150277_recurso;
 
 import game.Contracts.ClassificationContract;
 import game.Contracts.PilotContract;
-import game.Contracts.RaceResultsComparator;
 import game.classes.RaceResultsAbstract;
 import game.classes.VehicleAbstract;
 import game.classes.VehicleManagement;
 import game.collections.ClassificationManagementContract;
+import java.io.File;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-
+import org.json.simple.parser.ParseException;
 
 /**
  *
  * @author Tiago Pinto
  */
-public class RaceResults extends RaceResultsAbstract implements RaceResultsComparator{
+public class RaceResults extends RaceResultsAbstract {
 
-    private ClassificationManagementContract classification;
-    
-    public RaceResults() {
-        super();
+    private Classification cla;
+    private ClassificationManagement clm;
+    private String level;
+
+    public RaceResults(String level) {
+        this.level = level;
+        this.clm = new ClassificationManagement();
     }
-    
 
     @Override
     public ClassificationManagementContract getClassificationManagementContract() {
-        return classification;
-    }
-
-    
-    @Override
-    public boolean saveResultsToFile() throws IOException, org.json.simple.parser.ParseException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean saveMultiPlayerResultsToFile(ClassificationContract cc, VehicleManagement vm) throws IOException, org.json.simple.parser.ParseException {
+    public boolean saveResultsToFile() throws IOException, ParseException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean saveMultiPlayerResultsToFile(ClassificationContract cc, VehicleManagement vm) throws IOException, ParseException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public ClassificationManagementContract loadResultsFromFile() throws IOException {
-        
-            JSONParser parser = new JSONParser();
- 
-        try {
- 
-            Object obj = parser.parse(new FileReader("raceResults/file1.txt"));
- 
-            JSONObject jsonObject = (JSONObject) obj;
- 
-            String name = (String) jsonObject.get("Name");
-            String author = (String) jsonObject.get("Author");
-            JSONArray companyList = (JSONArray) jsonObject.get("Company List");
- 
-            System.out.println("Name: " + name);
-            System.out.println("Author: " + author);
-            System.out.println("\nCompany List:");
-            Iterator<String> iterator = companyList.iterator();
-            while (iterator.hasNext()) {
-                System.out.println(iterator.next());
+        File f = new File("raceResulsts" + level + ".json");
+
+        if (f.exists()) {
+            try {
+
+                ClassificationManagement cm = new ClassificationManagement();
+
+                JSONParser parser = new JSONParser();
+
+                JSONArray jsonArray = (JSONArray) parser.parse(new FileReader("raceResulsts" + level + ".json"));
+
+                for (Object o : jsonArray) {
+
+                    JSONObject classification = (JSONObject) o;
+                    JSONArray classificationDetails = (JSONArray) classification.get("positionDetails");
+
+                    for (Object obj : classificationDetails) {
+
+                        JSONObject classificationDetailsObj = (JSONObject) obj;
+
+                        String vehicleName = (String) classificationDetailsObj.get("Vehicle");
+                        String pilotName = (String) classificationDetailsObj.get("PilotName");
+
+                        int pilotID = Integer.parseInt("" + (long) classificationDetailsObj.get("PilotID"));
+                        double bestLap = (double) classificationDetailsObj.get("BestLap");
+                        int totalLaps = Integer.parseInt("" + (long) classificationDetailsObj.get("TotalLaps"));
+                        double BestTime = Integer.parseInt("" + (long) classificationDetailsObj.get("BestTime"));
+
+                        Pilot pilot = new Pilot(pilotName, pilotID);
+                        Vehicle vehicle = new Vehicle(vehicleName);
+                        Classification cl = new Classification(level, pilot, vehicle);
+                        cm.addObject(cl);
+
+                    
+                    }
+                }
+                
+                return cm;
+
+            } catch (ParseException ex) {
+                Logger.getLogger(RaceResults.class.getName()).log(Level.SEVERE, null, ex);
             }
- 
-        } catch (Exception e) {
-            e.printStackTrace();
         }
-        return classification;
+        return null;
     }
 
     @Override
@@ -85,7 +105,8 @@ public class RaceResults extends RaceResultsAbstract implements RaceResultsCompa
     }
 
     @Override
-    public void addClassification(ClassificationContract cc) {
+    public void addClassification(ClassificationContract cc
+    ) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -104,9 +125,4 @@ public class RaceResults extends RaceResultsAbstract implements RaceResultsCompa
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public int compareTo(RaceResultsComparator rrc) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
 }

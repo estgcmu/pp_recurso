@@ -13,8 +13,8 @@ import javafx.scene.input.KeyCode;
  * @author Tiago Pinto
  */
 public class Pilot implements PilotContract{
-    
-    private String name = "";
+     
+    private String name;
     private int id = 0;
     private KeyCode UP = KeyCode.UP;
     private KeyCode DOWN = KeyCode.DOWN;
@@ -23,13 +23,13 @@ public class Pilot implements PilotContract{
 
     public Pilot() {
     }
-    
-    public Pilot(int id) {
-        super();
+
+    public Pilot(String name, int id) {
+        this.name = name;
         this.id = id;
     }
-    
 
+   
     @Override
     public String getName() {
         return name;

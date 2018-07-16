@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 public class RacingGame extends game.classes.RacingGame{
 
     public RacingGame() {
-        super();
+        
     }
 
     @Override

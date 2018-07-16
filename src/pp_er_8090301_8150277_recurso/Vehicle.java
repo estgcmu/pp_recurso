@@ -21,25 +21,18 @@ import org.json.simple.parser.ParseException;
  *
  * @author Tiago Pinto
  */
-public class Vehicle extends VehicleAbstract{
-    
-    private double speed = 0.1;
-    private int direction = 5;
-    private double padBreakVehicle = 0.1;
-    private String type = "x";
-    private String model = "Norton 1941";
-    private Pilot pilotName;
-    private String name = "Bike";
-    private double w = 20.0;
-    private double h = 20.0;
-    private double[] bounds = {29.0, 0.0, 15.0, 0.0,
-            15.0, 0.0, 7.0, 12.0,
-            7.0, 12.0, -3.0, 13.0,
-            -3.0, 13.0, -3.0, 22.0,
-            -3.0, 22.0, 6.0, 26.0,
-            6.0, 26.0, 34.0, 24.0,
-            34.0, 24.0, 35.0, 5.0,
-            35.0, 5.0, 29.0, -1.0};
+public class Vehicle extends VehicleAbstract {
+
+    private double speed;
+    private int direction;
+    private double brakes;
+    private String type;
+    private String model;
+    private Pilot pilot;
+    private String name;
+    private double w;
+    private double h;
+    private double[] bounds;
 
     public Vehicle(String name) {
         super(name);
@@ -50,46 +43,36 @@ public class Vehicle extends VehicleAbstract{
         JSONParser parser = new JSONParser();
 
         try {
-            
-            
-            Object obj = parser.parse(new FileReader("src/vehicleJSON/bike.json"));
 
+            Object obj = parser.parse(new FileReader("src/vehicleJSON/bike.json" + getName() + ".json"));
             JSONObject jsonObject = (JSONObject) obj;
-            //System.out.println(jsonObject);
-
-            String Type = (String) jsonObject.get("Type");
-            System.out.println("Type" + "\n" + Type);
-    
 
             String Model = (String) jsonObject.get("Model");
-            System.out.println("Model" + "\n" + Model);
-            
-            
+            model = Model;
+
             // loop array
             JSONArray Bounds = (JSONArray) jsonObject.get("Bounds");
-            Iterator<Long> iterator = Bounds.iterator();
-            while (iterator.hasNext()) {
-                System.out.println(iterator.next());
-                
+            bounds = new double[Bounds.size()];
+
+            for (int i = 0; i < Bounds.size(); i++) {
+                bounds[i] = (double) Bounds.get(i);
             }
-            
+
             Double Speed = (Double) jsonObject.get("Speed");
-            System.out.println("Speed" + "\n" + Speed);
+            speed = Speed;
+
+            String Direction = "" + (Long)jsonObject.get("Direction");
+            int vehicleDirection = Integer.parseInt(Direction);
+            direction = vehicleDirection;
             
-            Long Direction = (Long) jsonObject.get("Direction");
-            System.out.println("Direction" + "\n" + Direction);
-            
-            
-            
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
+            Double Break = (Double) jsonObject.get("Break");
+            brakes = Break;
+
+        } catch (ParseException ex){
+            return false;
         }
-        
-        return Boolean.parseBoolean(string);
+
+        return true;
     }
 
     @Override
@@ -104,7 +87,7 @@ public class Vehicle extends VehicleAbstract{
 
     @Override
     public double getBreakPadVehicle() {
-        return padBreakVehicle;
+        return brakes;
     }
 
     @Override
@@ -119,14 +102,12 @@ public class Vehicle extends VehicleAbstract{
 
     @Override
     public void setPilot(PilotContract pc) {
-        this.pilotName = (Pilot) pc;
+        this.pilot = (Pilot) pc;
     }
 
     @Override
     public String getName() {
-      
-        System.out.println("Name:" + name);
-          return name;
+        return name;
     }
 
     @Override
@@ -136,8 +117,7 @@ public class Vehicle extends VehicleAbstract{
 
     @Override
     public PilotContract getPilot() {
-        //return Pilot pilotName;
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return pilot;
     }
 
     @Override
@@ -164,5 +144,5 @@ public class Vehicle extends VehicleAbstract{
     public double[] getBounds() {
         return bounds;
     }
-    
+
 }

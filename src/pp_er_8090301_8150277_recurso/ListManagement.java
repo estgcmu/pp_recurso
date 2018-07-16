@@ -15,6 +15,7 @@ import java.util.Arrays;
 public class ListManagement implements ListManagementContract{
 
     private Object objects[];
+    private int numberOfobjects;
     
     public ListManagement() {
         super();
@@ -75,7 +76,7 @@ public class ListManagement implements ListManagementContract{
     }
 
     private int size() {
-        return size();
+        return numberOfobjects;
     }
     
 }

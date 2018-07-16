@@ -19,27 +19,27 @@ import org.json.simple.parser.ParseException;
  *
  * @author Tiago Pinto
  */
-public class Level implements LevelContract{
-    
+public class Level implements LevelContract {
+
     private String name;// = "Easy Game";
     private String pathToImage;// = "src/levelImages/level01.png";
-    private double[] lowerBounds;        
+    private double[] lowerBounds;
     private double[] upperBounds;
     private double[] checkPoints;
     private double[] startCar;
+    private boolean mappingBounds;
 
     public Level() {
-    } 
-    
-    public Level(String name, String pathToImage, double[] lowerBounds, double[] upperBounds, double[] checkPoints, double[] startCar) {
+    }
+
+    public Level(String name, boolean mappingBounds) throws IOException {
         this.name = name;
-        this.pathToImage = pathToImage;
-        this.lowerBounds = lowerBounds;
-        this.upperBounds = upperBounds;
-        this.checkPoints = checkPoints;
-        this.startCar = startCar;
-    }    
+        this.mappingBounds = mappingBounds(name);
+        setPathToImage(name);
+    }
+
     
+
     @Override
     public String getName() {
         return name;
@@ -55,74 +55,48 @@ public class Level implements LevelContract{
         JSONParser parser = new JSONParser();
 
         try {
-            
-            
-            //Criar um array para cada elemento com tamnho
-            // Variável igualar 
-            
-            double[] lowerBounds = new double[100];
-            double[] upperBounds = new double[100];
-            double[] checkPoints = new double[50];
-            double[] startCar = new double[10];
-            
-            Object obj = parser.parse(new FileReader("src/levelsJSON/level1.json"));
 
+            Object obj = parser.parse(new FileReader("src/levelsJSON/level1.json" + string + ".json"));
             JSONObject jsonObject = (JSONObject) obj;
-            //System.out.println(jsonObject);
 
-            Long Level = (Long) jsonObject.get("Level");
-            System.out.println("Level");
-    
-            /*
-            JSONArray UpperBound = new JSONArray();
-            for (int i = 0; i < this.upperBounds.length; i++) {
-            UpperBound.add(this.upperBounds[i]);
-            UpperBound = upperBounds;
-            */
 
             // loop array
             JSONArray UpperBound = (JSONArray) jsonObject.get("UpperBound");
-            Iterator<Long> iterator = UpperBound.iterator();
-            while (iterator.hasNext()) {
-                System.out.println(iterator.next());
-                upperBounds = UpperBound;
+            upperBounds = new double[UpperBound.size()];
+
+            for (int i = 0; i < UpperBound.size(); i++) {
+                upperBounds[i] = (double) UpperBound.get(i);
             }
-            
+
             // loop array
             JSONArray LowerBound = (JSONArray) jsonObject.get("LowerBound");
-            Iterator<Long> iterator_2 = LowerBound.iterator();
-            System.out.println("Lowerbound");
-            while (iterator_2.hasNext()) {
-                System.out.println(iterator_2.next());
+            lowerBounds = new double[LowerBound.size()];
+
+            for (int i = 0; i < LowerBound.size(); i++) {
+                lowerBounds[i] = (double) LowerBound.get(i);
             }
-            
-             // loop array
+
+            // loop array
             JSONArray Checkpoints = (JSONArray) jsonObject.get("Checkpoints");
-            Iterator<Long> iterator_3 = Checkpoints.iterator();
-            System.out.println("Checkpoints");
-            while (iterator_3.hasNext()) {
-                System.out.println(iterator_3.next());
+            checkPoints = new double[Checkpoints.size()];
+
+            for (int i = 0; i < Checkpoints.size(); i++) {
+                checkPoints[i] = (double) Checkpoints.get(i);
+
             }
-            
+
             // loop array
             JSONArray StartCar = (JSONArray) jsonObject.get("StartCar");
-            Iterator<Long> iterator_4 = StartCar.iterator();
-            System.out.println("StartCar");
-            while (iterator_4.hasNext()) {
-                System.out.println(iterator_4.next());
+            startCar = new double[StartCar.size()];
+
+            for (int i = 0; i < StartCar.size(); i++) {
+                startCar[i] = (double) StartCar.get(i);
             }
-            
-            
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
+
+        } catch (ParseException ex) {
+            return false;
         }
-        
-        return Boolean.parseBoolean(string);
-    
+        return true;
     }
 
     @Override
@@ -132,7 +106,7 @@ public class Level implements LevelContract{
 
     @Override
     public void setPathToImage(String string) {
-        this.pathToImage = string;
+        this.pathToImage = "src/levelImages/level01.png" + string + ".png";
     }
 
     @Override
@@ -154,5 +128,5 @@ public class Level implements LevelContract{
     public double[] getStartCar() {
         return startCar;
     }
-    
+
 }
