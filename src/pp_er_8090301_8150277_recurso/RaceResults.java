@@ -83,7 +83,7 @@ public class RaceResults extends RaceResultsAbstract {
 
                         Pilot pilot = new Pilot(pilotName, pilotID);
                         Vehicle vehicle = new Vehicle(vehicleName);
-                        Classification cl = new Classification(level, pilot, vehicle);
+                        Classification cl = new Classification(level, pilot, vehicle, totalLaps);
                         cm.addObject(cl);
 
                     
@@ -101,7 +101,7 @@ public class RaceResults extends RaceResultsAbstract {
 
     @Override
     public ClassificationContract mapLoadingResults() throws IOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return cla;
     }
 
     @Override

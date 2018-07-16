@@ -32,6 +32,13 @@ public class Level implements LevelContract {
     public Level() {
     }
 
+    public Level(String name, String pathToImage) {
+        this.name = name;
+        this.pathToImage = pathToImage;
+    }
+    
+    
+
     public Level(String name, boolean mappingBounds) throws IOException {
         this.name = name;
         this.mappingBounds = mappingBounds(name);

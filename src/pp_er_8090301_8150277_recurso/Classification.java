@@ -27,12 +27,12 @@ public class Classification implements ClassificationContract {
     public Classification() {
     }
 
-    public Classification(String level, Pilot Pilot, Vehicle vehicle) {
+    public Classification(String level, Pilot Pilot, Vehicle vehicle, int totalLaps) {
         this.level = level;
         this.Pilot = Pilot;
         this.vehicle = vehicle;
+        this.totalLaps = totalLaps;
     }
-    
     
 
     @Override

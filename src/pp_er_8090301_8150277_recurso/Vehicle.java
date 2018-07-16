@@ -33,10 +33,13 @@ public class Vehicle extends VehicleAbstract {
     private double w;
     private double h;
     private double[] bounds;
+    private boolean mappingBounds;
 
     public Vehicle(String name) {
         super(name);
+        this.type = name;
     }
+  
 
     @Override
     public boolean mappingBounds(String string) throws IOException {
